@@ -1,0 +1,10 @@
+import yfinance as yf
+import pandas as pd
+
+# Scarica dati Apple ultimi 2 anni
+data = yf.download("AAPL", start="2022-01-01", end="2024-01-01")
+
+# Calcola rendimenti giornalieri
+returns = data["Close"].pct_change().dropna()
+
+print(returns.head(10))
